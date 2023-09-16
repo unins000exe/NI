@@ -45,7 +45,7 @@ def parse_input(input1):
         if list(set(orders)) != orders:
             raise ValueError('Неправильно заданы порядковые номера заходящих дуг.')
 
-    return arcs, vs
+    return arcs, sorted(vs)
 
 
 def make_xml(arcs, vs, output1):

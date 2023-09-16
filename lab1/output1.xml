@@ -1,8 +1,8 @@
 <graph>
+  <vertex>v1</vertex>
   <vertex>v2</vertex>
   <vertex>v3</vertex>
   <vertex>v4</vertex>
-  <vertex>v1</vertex>
   <arc>
     <from>v1</from>
     <to>v2</to>
