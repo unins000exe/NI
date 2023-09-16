@@ -29,6 +29,7 @@ def parse_input(input1):
     str = ''.join(str.split())
     arcs = [tuple(x.split(',')) for x in str[1:-1].split('),(')]
     arcs = [(x[0], x[1], int(x[2])) for x in arcs]
+    arcs = sorted(arcs, key=lambda x: x[2])
 
     visits = dict()
     vs = set()
