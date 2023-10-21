@@ -14,7 +14,8 @@ def parse_param_value(param_value_str):
 # TODO: ещё подумать как это красивее сделать
 def create_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('params', nargs='+', type=parse_param_value)
+    parser.add_argument('params', nargs='+', type=parse_param_value,
+                        help='input1=input1.txt output1=output1.xml')
     args = parser.parse_args()
     params = dict(args.params)
     input1 = params.get('input1')
