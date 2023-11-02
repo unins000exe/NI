@@ -24,48 +24,9 @@ def create_parser():
 
 class Vertex:
     def __init__(self, v):
-        self.v = v
-        self.left = None
-        self.right = None
-
-
-def height(v):
-    if not v:
-        return 0
-    l_height = height(v.left)
-    r_height = height(v.right)
-    return max(l_height, r_height) + 1
-
-
-def breadth_first(root):
-    h = height(root)
-    func = []
-    for i in range(h):
-        print_level(root, i, func)
-    # print_level(root, h, func)
-    return func, h
-
-
-def print_level(root, level, func):
-    if not root:
-        return
-
-    if level == 0:
-        if root.left:
-            rl = root.left.v
-        else:
-            rl = ''
-        if root.right:
-            rr = root.right.v
-        else:
-            rr = ''
-
-        func.append([root.v, rl, rr])
-
-    if level > 0:
-        print_level(root.left, level - 1, func)
-        print_level(root.right, level - 1, func)
-
+        self.name = v
+        self.children = []
+        self.parents = []
 
 
 def read_graph(xml_file):
@@ -83,11 +44,11 @@ def read_graph(xml_file):
         i += 1
 
     for elem in root.iter("arc"):
-        v = vs[elem[1].text]
-        if v.left is None:
-            v.left = vs[elem[0].text]
-        else:
-            v.right = vs[elem[0].text]
+        v0 = vs[elem[0].text]
+        v1 = vs[elem[1].text]
+        v0.children.append(v1)
+        v1.parents.append(v0)
+
         edges[elem[0].text].append(elem[1].text)
 
     dfs(list(edges.keys())[0], edges, color)
@@ -112,14 +73,15 @@ def find_root(edges, vs):
             return vs[v]
 
 
+def make_func(v, vs):
+    parents = [make_func(c, vs) for c in v.parents]
+    return f'{v.name}({", ".join(parents)})'
+
+
 def main():
     # input1, output1 = create_parser()
     edges, vs = read_graph('output1.xml')
     root = find_root(edges, vs)
-    func, h = breadth_first(root)
-    print('func', func)
-    # str_func = ''
-    # for i in range(h):
-
+    print(make_func(root, vs))
 
 main()
