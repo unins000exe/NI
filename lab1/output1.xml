@@ -1,31 +1,44 @@
 <graph>
-  <vertex>v1</vertex>
-  <vertex>v2</vertex>
-  <vertex>v3</vertex>
-  <vertex>v4</vertex>
+  <vertex>A</vertex>
+  <vertex>B</vertex>
+  <vertex>C</vertex>
+  <vertex>D</vertex>
+  <vertex>E</vertex>
+  <vertex>F</vertex>
+  <vertex>G</vertex>
   <arc>
-    <from>v1</from>
-    <to>v2</to>
+    <from>A</from>
+    <to>D</to>
     <order>1</order>
   </arc>
   <arc>
-    <from>v2</from>
-    <to>v3</to>
+    <from>B</from>
+    <to>E</to>
     <order>1</order>
   </arc>
   <arc>
-    <from>v1</from>
-    <to>v4</to>
+    <from>D</from>
+    <to>G</to>
     <order>1</order>
   </arc>
   <arc>
-    <from>v3</from>
-    <to>v4</to>
+    <from>E</from>
+    <to>F</to>
+    <order>1</order>
+  </arc>
+  <arc>
+    <from>A</from>
+    <to>D</to>
     <order>2</order>
   </arc>
   <arc>
-    <from>v2</from>
-    <to>v4</to>
-    <order>3</order>
+    <from>C</from>
+    <to>E</to>
+    <order>2</order>
+  </arc>
+  <arc>
+    <from>F</from>
+    <to>G</to>
+    <order>2</order>
   </arc>
 </graph>

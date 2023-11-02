@@ -64,6 +64,7 @@ def make_xml(arcs, vs, output1):
     print('Граф успешно записан в', output1)
 
 
+# python3 nntask1.py input1=input1.txt output1=output1.xml
 def main():
     input1, output1 = create_parser()
     arcs, vs = parse_input(input1)
