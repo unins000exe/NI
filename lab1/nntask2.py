@@ -79,9 +79,12 @@ def make_func(v, vs):
 
 
 def main():
-    # input1, output1 = create_parser()
-    edges, vs = read_graph('output1.xml')
+    input1, output1 = create_parser()
+    edges, vs = read_graph(input1)
     root = find_root(edges, vs)
-    print(make_func(root, vs))
+    z = make_func(root, vs)
+    with open(output1, 'w') as out:
+        out.write(z)
+
 
 main()
