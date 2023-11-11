@@ -22,10 +22,10 @@ python3 nntask3.py input1=digraph2.xml input2=operations3.txt output1=func_value
 ```
 Первый граф ($5 * 5 + e^{3 * 9}$):
 
-![](https://github.com/unins000exe/NI/blob/main/img/test1.png)
+![](https://github.com/unins000exe/NI/blob/main/img/wtest1.png)
 
 Второй граф ($e^{3 * 1 + 2}$):
 
-![](https://github.com/unins000exe/NI/blob/main/img/test2.png)
+![](https://github.com/unins000exe/NI/blob/main/img/wtest2.png)
 
 В последнем тесте у вершины E задана операция $exp$, но она имеет двух родителей (то есть два аргумента), поэтому программа завершает работу с выводом сообщения об ошибке.
