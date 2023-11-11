@@ -1,0 +1,33 @@
+<graph>
+  <vertex>A</vertex>
+  <vertex>B</vertex>
+  <vertex>C</vertex>
+  <vertex>D</vertex>
+  <vertex>E</vertex>
+  <vertex>F</vertex>
+  <arc>
+    <from>A</from>
+    <to>D</to>
+    <order>1</order>
+  </arc>
+  <arc>
+    <from>D</from>
+    <to>E</to>
+    <order>1</order>
+  </arc>
+  <arc>
+    <from>E</from>
+    <to>F</to>
+    <order>1</order>
+  </arc>
+  <arc>
+    <from>B</from>
+    <to>D</to>
+    <order>2</order>
+  </arc>
+  <arc>
+    <from>C</from>
+    <to>E</to>
+    <order>2</order>
+  </arc>
+</graph>

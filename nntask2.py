@@ -14,7 +14,7 @@ def parse_param_value(param_value_str):
 def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('params', nargs='+', type=parse_param_value,
-                        help='input1=input1.txt output1=output1.xml')
+                        help='input1=arcs1.txt output1=output1.xml')
     args = parser.parse_args()
     params = dict(args.params)
     input1 = params.get('input1')
@@ -62,8 +62,8 @@ def dfs(v, edges, color):
         if color[u] == 0:
             dfs(u, edges, color)
         if color[u] == 1:
-            print('Найден цикл.')
-            return True
+            print('Найден цикл. Работа программы остановлена.')
+            exit()
     color[v] = 2
 
 
@@ -85,6 +85,7 @@ def main():
     z = make_func(root, vs)
     with open(output1, 'w') as out:
         out.write(z)
+        print(f'Префиксная функция успешно записана в {output1}')
 
 
 main()

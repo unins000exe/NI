@@ -15,7 +15,7 @@ def parse_param_value(param_value_str):
 def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('params', nargs='+', type=parse_param_value,
-                        help='input1=input1.txt output1=output1.xml')
+                        help='input1=arcs1.txt output1=output1.xml')
     args = parser.parse_args()
     params = dict(args.params)
     input1 = params.get('input1')
@@ -64,7 +64,7 @@ def make_xml(arcs, vs, output1):
     print('Граф успешно записан в', output1)
 
 
-# python3 nntask1.py input1=input1.txt output1=output1.xml
+# python3 nntask1.py input1=arcs1.txt output1=output1.xml
 def main():
     input1, output1 = create_parser()
     arcs, vs = parse_input(input1)
