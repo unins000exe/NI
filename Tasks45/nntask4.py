@@ -27,7 +27,9 @@ class Network:
     def forward(self):
         for k in range(self.p):
             l = self.layers[k]
+            print(l.w, l.x)
             y = np.dot(l.w, l.x)
+            print('y', y)
             for i in range(l.n):
                 y[i] = sigmoid(y[i])
             l.z = y
