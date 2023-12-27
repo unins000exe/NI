@@ -17,7 +17,7 @@ class Network:
             self.z = np.zeros(self.n)
             self.df = np.zeros(self.n)
 
-    def __init__(self, input1, input2):
+    def __init__(self, input1, input2, input3):
         self.layers = []
         weights = read_json(input1)
         for w in weights:
@@ -25,9 +25,11 @@ class Network:
         self.p = len(self.layers)
 
         self.deltas = [[]] * self.p
-        self.alpha = 0.5
         self.x = np.array(read_json(input2)['x'])
         self.y = np.array(read_json(input2)['y'])
+        self.max_epochs = int(read_json(input3)['iters'])
+        self.alpha = float(read_json(input3)['alpha'])
+        self.eps = float(read_json(input3)['eps'])
 
     def forward(self, input):
         for k in range(self.p):
@@ -75,11 +77,10 @@ class Network:
                     lk.w[i][j] -= self.alpha * self.deltas[k][i] * lk.x[j]
 
     def train(self):
-        eps = 0.0000001
-        epoch = 100000
         ep = 0
         error = 1
-        while ep < epoch and error > eps:
+        result = ''
+        while ep < self.max_epochs and error > self.eps:
             ep += 1
             errors = []
             for i in range(len(self.x)):
@@ -88,12 +89,12 @@ class Network:
                 self.update()
                 # print(f'X: {self.x[i]}, Y: {self.y[i]}, out: {a}')
                 error = np.mean(np.array(errors))
-            # print(f'Итерация {ep}, ошибки {error}')
+            result += f'{ep}: {error}\n'
 
         for i in range(len(self.x)):
             print(f'X: {self.x[i]}, Y: {self.y[i]}, out: {self.forward(self.x[i])}')
 
-
+        return result
 
 
 def sigmoid(x):
@@ -114,8 +115,9 @@ def create_parser():
     params = dict(args.params)
     input1 = params.get('input1')
     input2 = params.get('input2')
+    input3 = params.get('input3')
     output1 = params.get('output1')
-    return input1, input2, output1
+    return input1, input2, input3, output1
 
 
 def write_json(filename, data):
@@ -130,18 +132,19 @@ def read_json(filename):
     return data
 
 
-# python3 nntask4.py input1='W.json' input2='X.json' output1='Y.json'
+# python3 nntask5.py input1='W_xor.json' input2='XY_xor.json' input3='params_xor.json' output1='E_xor.txt'
 def main():
-    # input1, input2, output1 = create_parser()
-    input1 = 'W2.json'
-    input2 = 'XY.json'
-    output1 = 'Y2.json'
-    network = Network(input1, input2)
-    # write_json(output1, {'y': list(network.forward())})
+    input1, input2, input3, output1 = create_parser()
+    # input1 = 'W_num.json'
+    # input2 = 'XY_num.json'
+    # input3 = 'params_num.json'
+    # output1 = 'E_num.txt'
+    network = Network(input1, input2, input3)
 
-    x = [[0, 0], [0, 1], [1, 0], [1, 1]]
-    y = [[0.0], [1.0], [1.0], [0.0]]
-    network.train()
+    result = network.train()
+    with open(output1, 'w', encoding="utf-8") as out:
+        out.write(result)
+    print('История обучения записана в', output1)
 
 
 main()
