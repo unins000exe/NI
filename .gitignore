@@ -8,3 +8,5 @@
 *.gz
 *.toc
 *.fls
+*.pygtex
+*.pygstyle
