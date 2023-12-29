@@ -29,3 +29,14 @@ python3 nntask3.py input1=tests/digraph2.xml input2=tests/operations3.txt output
 ![](https://github.com/unins000exe/NI/blob/main/img/wtest2.png)
 
 В последнем тесте у вершины E задана операция $exp$, но она имеет двух родителей (то есть два аргумента), поэтому программа завершает работу с выводом сообщения об ошибке.
+
+### 4. Построение многослойной нейронной сети
+```
+python3 nntask4.py input1='W.json' input2='X.json' output1='Y.json'
+```
+
+### 5. Реализация метода обратного распространения ошибки для многослойной НС
+```
+# python3 nntask5.py input1='W_xor.json' input2='XY_xor.json' input3='params_xor.json' output1='E_xor.txt'
+# python3 nntask5.py input1='W_num.json' input2='XY_num.json' input3='params_num.json' output1='E_num.txt'
+```
