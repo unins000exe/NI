@@ -133,7 +133,6 @@ def read_json(filename):
 
 
 # python3 nntask5.py input1='W_xor.json' input2='XY_xor.json' input3='params_xor.json' output1='E_xor.txt'
-# python3 nntask5.py input1='W_num.json' input2='XY_num.json' input3='params_num.json' output1='E_num.txt'
 def main():
     input1, input2, input3, output1 = create_parser()
     network = Network(input1, input2, input3)
